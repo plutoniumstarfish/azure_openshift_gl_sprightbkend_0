@@ -19,7 +19,7 @@ resource "random_string" "resource_code" {
 
 resource "azurerm_resource_group" "tfstate" {
   name     = "gni-tfstate"
-  location = "East US"
+  location = var.location
 }
 
 resource "azurerm_storage_account" "tfstate" {
