@@ -31,7 +31,7 @@ resource "azurerm_storage_account" "tfstate" {
   allow_nested_items_to_be_public = false
 
   tags = {
-    environment = "${var.infra_env}"
+    environment = var.infra_env
   }
 }
 
