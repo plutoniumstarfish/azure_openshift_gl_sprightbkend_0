@@ -1,4 +1,11 @@
 
+Azure
+Tenant
+ ├── Subscription A (Prod)  
+ ├── Subscription B (Dev)  
+ └── Subscription C (Shared)   
+
+
 az ad sp create-for-rbac \
   --name terraform-sp \
   --role Contributor \
