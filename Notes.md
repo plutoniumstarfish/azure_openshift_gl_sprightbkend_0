@@ -1,9 +1,9 @@
 
 Azure
 Tenant
- ├── Subscription A (Prod)  
- ├── Subscription B (Dev)  
- └── Subscription C (Shared)   
+ ├── Subscription A (DEV)  
+ ├── Subscription B (NPR)  
+ └── Subscription C (PROD)   
 
 
 az ad sp create-for-rbac \
