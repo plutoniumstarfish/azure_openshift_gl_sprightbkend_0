@@ -1,4 +1,3 @@
-
 locals {
   loc_name = replace(lower(var.location), " ", "")
 }
