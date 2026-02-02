@@ -24,6 +24,7 @@ resource "azurerm_storage_account" "tfstate_sa" {
 
   tags = {
     environment = var.infra_env
+    name        = "${var.org}-${var.infra_env}-${local.loc_name}-tfstate${random_string}"
   }
 }
 
