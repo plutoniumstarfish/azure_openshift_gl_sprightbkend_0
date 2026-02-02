@@ -27,7 +27,7 @@ resource "azurerm_storage_account" "tfstate_sa" {
   }
 }
 
-resource "azurerm_storage_container" "store_tfstate" {
+resource "azurerm_storage_container" "tfstate_store" {
   name                  = "${var.org}-${var.infra_env}-${local.loc_name}-tfstate"
   }
   storage_account_id    = azurerm_storage_account.tfstate_sa.id
