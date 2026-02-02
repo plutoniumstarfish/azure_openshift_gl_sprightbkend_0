@@ -4,8 +4,8 @@ resource "random_string" "resource_code" {
   upper   = false
 }
 
-resource "azurerm_resource_group" "tfstate" {
-  name     = "gni-tfstate"
+resource "azurerm_resource_group" "tfstate_rg" {
+  name     = "gni-${var.infra_env}-tfstate-rg"
   location = var.location
 }
 
