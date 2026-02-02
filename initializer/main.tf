@@ -3,7 +3,6 @@ locals {
   loc_name = replace(lower(var.location), " ", "")
 }
 
-
 resource "random_string" "resource_code" {
   length  = 5
   special = false
