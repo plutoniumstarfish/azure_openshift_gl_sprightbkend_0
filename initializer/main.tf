@@ -1,3 +1,9 @@
+
+locals {
+  loc_name = replace(lower(var.location), " ", "")
+}
+
+
 resource "random_string" "resource_code" {
   length  = 5
   special = false
@@ -5,11 +11,12 @@ resource "random_string" "resource_code" {
 }
 
 resource "azurerm_resource_group" "tfstate_rg" {
-  name     = "gni-${var.infra_env}-tfstate-rg"
+  name     = "gni-${var.infra_env}-${local.loc_name}-tfstate-rg"
   location = var.location
 }
 
-resource "azurerm_storage_account" "tfstate" {
+
+resource "azurerm_storage_account" "tfstate_sa" {
   name                     = "tfstate${random_string.resource_code.result}"
   resource_group_name      = azurerm_resource_group.tfstate.name
   location                 = azurerm_resource_group.tfstate.location
