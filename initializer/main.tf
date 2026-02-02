@@ -15,9 +15,7 @@ resource "azurerm_resource_group" "tfstate_rg" {
 
 
 resource "azurerm_storage_account" "tfstate_sa" {
-  name                     = "tfstate${random_string.resource_code.result}"
-  
-  name = "${var.org}-${var.infra_env}-${local.loc_name}-tfstate${random_string}"
+  name                     = "${var.org}-${var.infra_env}-${local.loc_name}-tfstate${random_string}"
   resource_group_name      = azurerm_resource_group.tfstate.name
   location                 = azurerm_resource_group.tfstate.location
   account_tier             = "Standard"
