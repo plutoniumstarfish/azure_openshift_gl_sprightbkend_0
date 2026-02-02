@@ -13,7 +13,6 @@ resource "azurerm_resource_group" "tfstate_rg" {
   location = var.location
 }
 
-
 resource "azurerm_storage_account" "tfstate_sa" {
   name                     = "${var.org}-${var.infra_env}-${local.loc_name}-tfstate${random_string}"
   resource_group_name      = azurerm_resource_group.tfstate_rg.name
@@ -28,8 +27,9 @@ resource "azurerm_storage_account" "tfstate_sa" {
   }
 }
 
-resource "azurerm_storage_container" "tfstate" {
-  name                  = "tfstate"
-  storage_account_id    = azurerm_storage_account.tfstate.id
+resource "azurerm_storage_container" "store_tfstate" {
+  name                  = "${var.org}-${var.infra_env}-${local.loc_name}-tfstate"
+  }
+  storage_account_id    = azurerm_storage_account.tfstate_sa.id
   container_access_type = "private"
 }
