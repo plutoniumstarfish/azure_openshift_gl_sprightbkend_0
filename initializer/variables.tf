@@ -10,7 +10,7 @@ variable "infra_env" {
     default = "dev"
     
     
-variable "organization" {
+variable "org" {
     type = string
     description = "organization/company"
     default = "gni"
