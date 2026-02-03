@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "tfstate_rg" {
 
 resource "azurerm_storage_account" "tfstate_sa" {
   name = lower(
-    "${var.org}${var.infra_env}${local.loc_name}tfstate${random_string.resource_code.result}"
+    "${var.org}-${var.infra_env}-${local.loc_name}-tfstate${random_string.resource_code.result}"
   )
 
   resource_group_name      = azurerm_resource_group.tfstate_rg.name
