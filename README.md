@@ -1,10 +1,9 @@
 # azure_gni_gl_sprightblend_0
 
-Azure
-Tenant
+Azure Tenant  
  ├── Subscription A (DEV)  
  ├── Subscription B (NPR)  
- ├── Subscription C (PRE=PROD)  
+ ├── Subscription C (PRE-PROD)  
  └── Subscription D (PROD)    
    
 
