@@ -20,3 +20,10 @@ variable "address_space" {
     type = list(string)
     description = "address space or cidr"
 }
+
+variable "subnets" {
+  description = "Map of subnets to create"
+  type = map(object({
+    address_prefix = string
+  }))
+}
