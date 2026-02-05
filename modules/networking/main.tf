@@ -8,7 +8,7 @@ resource "azurerm_resource_group" "sharednet_rg" {
 }
 
 resource "azurerm_network_security_group" "sharednet_nsg" {
-  nname               = "${var.org}-${var.infra_env}-${local.loc_name}-sharednet-nsg
+  nname               = "${var.org}-${var.infra_env}-${local.loc_name}-sharednet-nsg"
   location            = var.location
   resource_group_name = azurerm_resource_group.sharednet_rg.name
 }
