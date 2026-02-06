@@ -29,8 +29,7 @@ resource "azurerm_virtual_network" "sharednet_vnet" {
 
 resource "azurerm_subnet" "sharednet_subnet" {
   for_each = var.subnets
-
-  name                 = "${var.org}-${var.infra_env}-${local.loc_name}-${each.key}"
+  name                 = each.key
   address_prefixes     = [each.value.address_prefix]
   resource_group_name  = azurerm_resource_group.sharednet_rg.name
   virtual_network_name = azurerm_virtual_network.sharednet_vnet.name
