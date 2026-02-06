@@ -17,16 +17,16 @@ Subscription A
 │       ├── Bastion  
 │       ├── AzureFirewall  
 │       └── Shared NSGs  
-│  
+│       
 ├── rg-app-dev  
 │       └── Dev VMs (private IP only)  
-│    
+│        
 ├── rg-app-npr  
 │       └── NPR VMs (private IP only)  
-│    
+│        
 ├── rg-app-prp  
 │       └── PRP VMs (private IP only)  
-│        
+│
 └── rg-app-prd  
         └── Prod VMs  (private IP only)  
     
