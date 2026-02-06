@@ -3,10 +3,10 @@
 
 
 Azure Tenant  
- ├── Subscription A (DEV)  
- ├── Subscription B (NPR)  
- ├── Subscription C (PRE-PROD)  
- └── Subscription D (PROD)    
+    ├── Subscription A (DEV)  
+    ├── Subscription B (NPR)  
+    ├── Subscription C (PRE-PROD)  
+   ` └── Subscription D (PROD)    
    
 
 Subscription A 
