@@ -10,26 +10,17 @@ Azure Tenant
    
 
 Subscription A 
-    │  
-    ├── rg-network-shared  
-    │       ├── vnet-shared  
-    │       ├── AzureBastionSubnet  
-    │       ├── Bastion  
-    │       ├── AzureFirewall  
-    │       └── Shared NSGs  
-    │       
-    ├── rg-app-dev  
-    │       └── Dev VMs (private IP only)  
-    │        
-    ├── rg-app-npr  
-    │       └── NPR VMs (private IP only)  
-    │        
-    ├── rg-app-prp  
-    │       └── PRP VMs (private IP only)  
-    │
-    └── rg-app-prd  
-            └── Prod VMs  (private IP only)  
-    
+    ├── sharednet_rg  
+    ├      ├── vnet  
+    ├      ├── subnet  
+    ├      ├── nsg
+    ├                
+    ├── bastion_rg  
+           ├── vnet  
+           ├── subnet  
+           ├── pip  
+           ├── bastion-host  
+  
   
 az ad sp create-for-rbac \
   --name terraform-sp \
