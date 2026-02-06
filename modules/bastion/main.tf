@@ -1,11 +1,12 @@
-# Create Resource Group
-
-resource "azurerm_resource_group" "bastion_rg" {
-  location = var.location
-  name     = random_pet.rg_name.id
+locals {
+  loc_name = replace(lower(var.location), " ", "")
 }
 
-# Create Virtual Network
+resource "azurerm_resource_group" "bastion_rg" {
+  name     = "${var.org}-${var.infra_env}-${local.loc_name}-bastion-rg"
+  location = var.location
+}
+
 resource "azurerm_virtual_network" "vnet" {
   name                = "example-network"
   address_space       = ["10.0.0.0/16"]
