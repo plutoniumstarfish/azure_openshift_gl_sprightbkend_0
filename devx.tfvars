@@ -1,10 +1,12 @@
+location = "East US"
+
 address_space = ["10.160.0.0/16"]
 
 subnets = {
-  subnet1 = { 
+  gni-dev-eastus-sharednet-subnet1 = {
     address_prefix = "10.160.0.0/20"
   }
-  subnet2 = {
+  gni-dev-eastus-sharednet-subnet2 = {
     address_prefix = "10.160.16.0/20"
   }
   AzureBastionSubnet = {
