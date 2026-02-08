@@ -11,15 +11,12 @@ Azure Tenant
 
 Subscription A 
     ├── sharednet_rg  
-    ├      ├── vnet  
-    ├      ├── subnet  
-    ├      ├── nsg
-    ├                
-    ├── bastion_rg  
-           ├── vnet  
-           ├── subnet  
-           ├── pip  
-           ├── bastion-host  
+       ├── vnet  
+       ├── subnet  
+       ├── nsg
+       ├── bastion       
+    
+           
   
   
 az ad sp create-for-rbac \
