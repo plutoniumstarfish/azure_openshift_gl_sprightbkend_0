@@ -3,6 +3,7 @@
 
 
 Azure Tenant  
+
     ├── Subscription A (DEV)  
     ├── Subscription B (NPR)  
     ├── Subscription C (PRE-PROD)  
