@@ -12,7 +12,7 @@ Azure Tenant
 
 Subscription A 
 
-    sharednet_rg  
+    shared_rg  
        ├── vnet  
        ├── subnet  
        ├── nsg  
