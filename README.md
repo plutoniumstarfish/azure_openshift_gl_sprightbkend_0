@@ -13,7 +13,7 @@ Subscription A
     ├── sharednet_rg  
        ├── vnet  
        ├── subnet  
-       ├── nsg
+       ├── nsg  
        ├── bastion       
     
            
