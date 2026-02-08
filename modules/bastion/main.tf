@@ -6,19 +6,27 @@ locals {
 
 resource "azurerm_resource_group" "bastion_rg" {
   name     = "${var.org}-${var.infra_env}-${local.loc_name}-bastion-rg"
-  location = var.location
+  resource_group_name = data.azurerm_resource_group.shared_rg.name
+  location            = data.azurerm_resource_group.shared_rg.location
+
 }
 
 resource "azurerm_virtual_network" "bastion_vnet" {
   name                = "${var.org}-${var.infra_env}-${local.loc_name}-bastion-vnet"
   address_space       = ["10.120.0.0/16"]
   location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = data.azurerm_resource_group.shared_rg.name
+  location            = data.azurerm_resource_group.shared_rg.location
+
 }
 
 resource "azurerm_subnet" "bastion_subnet" {
   name                 = "AzureBastionSubnet"
-  resource_group_name  = azurerm_resource_group.bastion_rg.name
+
+  resource_group_name = data.azurerm_resource_group.shared_rg.name
+  location            = data.azurerm_resource_group.shared_rg.location
+
+
   virtual_network_name = azurerm_virtual_network.bastion_vnet.name
   address_prefixes     = ["10.120.8.0/26"]
 }
@@ -33,8 +41,9 @@ resource "azurerm_public_ip" "bastion_pip" {
 
 resource "azurerm_bastion_host" "bastion_host" {
   name                = "${var.org}-${var.infra_env}-${local.loc_name}-bastion-host"
-  location            = var.location
-  resource_group_name = azurerm_resource_group.bastion_rg.name
+  resource_group_name = data.azurerm_resource_group.shared_rg.name
+  location            = data.azurerm_resource_group.shared_rg.location
+
 
   ip_configuration {
     name                 = "configuration"
