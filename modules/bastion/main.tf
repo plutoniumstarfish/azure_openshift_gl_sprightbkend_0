@@ -1,3 +1,5 @@
+
+
 locals {
   loc_name = replace(lower(var.location), " ", "")
 }
@@ -31,7 +33,7 @@ resource "azurerm_public_ip" "bastion_pip" {
 
 resource "azurerm_bastion_host" "bastion_host" {
   name                = "${var.org}-${var.infra_env}-${local.loc_name}-bastion-host"
-  location            = azurerm_resource_group.bastion_rg.location
+  location            = var.location
   resource_group_name = azurerm_resource_group.bastion_rg.name
 
   ip_configuration {
