@@ -1,4 +1,4 @@
-# azure_gni_gl_sprightblend_0
+# azure_openshift_gl_sprightblend_0
 
 
 
