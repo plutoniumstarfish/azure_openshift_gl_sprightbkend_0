@@ -13,7 +13,7 @@ resource "azurerm_network_security_group" "shared_nsg" {
   resource_group_name = azurerm_resource_group.shared_rg.name
 }
 
-resource "azurerm_virtual_network" "sharednet_vnet" {
+resource "azurerm_virtual_network" "shared_vnet" {
   count               = length(var.address_space)
   name                = "${var.org}-${var.infra_env}-${local.loc_name}-shared-vnet"
   address_space       = element(var.address_space, count.index)
@@ -27,7 +27,7 @@ resource "azurerm_virtual_network" "sharednet_vnet" {
   }
 }
 
-resource "azurerm_subnet" "sharednet_subnet" {
+resource "azurerm_subnet" "shared_subnet" {
   for_each = var.subnets
   name                 = each.key
   address_prefixes     = [each.value.address_prefix]
