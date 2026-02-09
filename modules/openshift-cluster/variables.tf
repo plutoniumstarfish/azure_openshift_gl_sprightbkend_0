@@ -2,6 +2,10 @@ variable "infra_env" {
   type = string
 }
 
+variable "env_suffix" {
+  type = string
+}
+
 variable "cluster_name" {
   type = string
 }
