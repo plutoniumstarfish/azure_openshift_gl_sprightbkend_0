@@ -1,5 +1,7 @@
 location = "East US"
 
+infra_env = "dev"
+
 address_space = ["10.160.0.0/16"]
 
 subnets = {
