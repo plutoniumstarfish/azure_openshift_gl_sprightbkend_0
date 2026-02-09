@@ -1,5 +1,16 @@
+variable "org" {
+    type = string
+    description = "organization/company"
+    default = "gni"
+}
+
 variable "infra_env" {
   type = string
+}
+
+variable "stage" {
+  type    = string
+  default = ""
 }
 
 variable "env_suffix" {

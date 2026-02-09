@@ -2,16 +2,15 @@ locals {
   loc_name = replace(lower(var.location), " ", "")
 }
 
-resource "azurerm_resource_group" "cluster" {
-  
-  name     = "${var.org}-${var.infra_env}${var.env_suffix}-${local.loc_name}-${var.cluster_name}-rg"
+resource "azurerm_resource_group" "cluster_rg" {
+  name     = local.rg_name
   location = var.location
 }
 
 resource "azurerm_network_interface" "bootstrap" {
   name                = "${var.cluster_name}-bootstrap-nic"
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = azurerm_resource_group.cluster_rg
 
   ip_configuration {
     name                          = "internal"
