@@ -2,6 +2,7 @@ location = "East US"
 
 infra_env = "dev"
 env_suffix = "1"
+cluster_name = "nadare"
 
 address_space = ["10.160.0.0/16"]
 
