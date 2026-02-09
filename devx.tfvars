@@ -1,6 +1,7 @@
 location = "East US"
 
 infra_env = "dev"
+env_suffix = "1"
 
 address_space = ["10.160.0.0/16"]
 
