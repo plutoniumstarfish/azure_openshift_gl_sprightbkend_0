@@ -27,3 +27,5 @@ subnets = {
   }
 }
 
+admin_username = "azureuser"
+ssh_public_key = ""

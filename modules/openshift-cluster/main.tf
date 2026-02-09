@@ -8,7 +8,7 @@ resource "azurerm_resource_group" "cluster_rg" {
 }
 
 resource "azurerm_network_interface" "bootstrap" {
-  name                = local.nic_name
+  name                = "${local.nic_name}-bootstrap"
   location            = var.location
   resource_group_name = local.rg_name
 
@@ -20,9 +20,9 @@ resource "azurerm_network_interface" "bootstrap" {
 }
 
 resource "azurerm_linux_virtual_machine" "bootstrap" {
-  name                  = "${var.cluster_name}-bootstrap"
+  name                  = "${local.vm_name}-bootstrap"
   location              = var.location
-  resource_group_name   = var.resource_group_name
+  resource_group_name   = local.rg_name
   size                  = var.bootstrap_size
   network_interface_ids = [azurerm_network_interface.bootstrap.id]
 

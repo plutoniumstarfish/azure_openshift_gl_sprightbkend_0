@@ -1,6 +1,3 @@
-locals {
-  loc_name = replace(lower(var.location), " ", "")
-}
 
 data "azurerm_resource_group" "shared_rg" {
   name = "${var.org}-${var.infra_env}-${local.loc_name}-shared-rg"
