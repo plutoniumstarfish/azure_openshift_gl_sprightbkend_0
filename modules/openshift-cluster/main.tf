@@ -1,3 +1,11 @@
+resource "azurerm_resource_group" "cluster" {
+  name     = "rg-${var.cluster_name}"
+  
+  "${var.org}-${var.infra_env}-${local.loc_name}-${var.cluster_name}-rg"
+  location = var.location
+}
+
+
 resource "azurerm_network_interface" "bootstrap" {
   name                = "${var.cluster_name}-bootstrap-nic"
   location            = var.location
