@@ -1,7 +1,6 @@
 resource "azurerm_resource_group" "cluster" {
-  name     = "rg-${var.cluster_name}"
   
-  "${var.org}-${var.infra_env}-${local.loc_name}-${var.cluster_name}-rg"
+  name     = "${var.org}-${var.infra_env}${var.env_suffix}-${local.loc_name}-${var.cluster_name}-rg"
   location = var.location
 }
 
