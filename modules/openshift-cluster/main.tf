@@ -8,13 +8,13 @@ resource "azurerm_resource_group" "cluster_rg" {
 }
 
 resource "azurerm_network_interface" "bootstrap" {
-  name                = "${var.cluster_name}-bootstrap-nic"
+  name                = local.nic_name
   location            = var.location
-  resource_group_name = azurerm_resource_group.cluster_rg
+  resource_group_name = local.rg_name
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = var.subnet_id
+    subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
   }
 }
