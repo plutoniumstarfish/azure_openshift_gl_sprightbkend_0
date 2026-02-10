@@ -40,10 +40,10 @@ resource "azurerm_linux_virtual_machine" "bootstrap" {
   }
 
   source_image_reference {
-    publisher = "RedHat"
-    offer     = "RHEL"
-    sku       = "9-lvm-gen2"
-    version   = "latest"
+    publisher = var.source_image.publisher
+    offer     = var.source_image.offer
+    sku       = var.source_image.sku
+    version   = var.source_image.version
   }
 }
 
@@ -79,16 +79,16 @@ resource "azurerm_linux_virtual_machine" "master" {
   }
 
   os_disk {
-    caching              = "ReadWrite"
-    storage_account_type = "Premium_LRS"
-    disk_size_gb         = 120
+    caching              = var.os_disk.caching
+    storage_account_type = var.os_disk.storage_account_type
+    disk_size_gb         = var.os_disk.disk_size_gb
   }
 
   source_image_reference {
-    publisher = "RedHat"
-    offer     = "RHEL"
-    sku       = "9-lvm-gen2"
-    version   = "latest"
+    publisher = var.source_image.publisher
+    offer     = var.source_image.offer
+    sku       = var.source_image.sku
+    version   = var.source_image.version
   }
 }
 
@@ -123,15 +123,15 @@ resource "azurerm_linux_virtual_machine" "worker" {
   }
 
   os_disk {
-    caching              = "ReadWrite"
-    storage_account_type = "Premium_LRS"
-    disk_size_gb         = 120
+    caching              = var.os_disk.caching
+    storage_account_type = var.os_disk.storage_account_type
+    disk_size_gb         = var.os_disk.disk_size_gb
   }
 
   source_image_reference {
-    publisher = "RedHat"
-    offer     = "RHEL"
-    sku       = "9-lvm-gen2"
-    version   = "latest"
+    publisher = var.source_image.publisher
+    offer     = var.source_image.offer
+    sku       = var.source_image.sku
+    version   = var.source_image.version
   }
 }

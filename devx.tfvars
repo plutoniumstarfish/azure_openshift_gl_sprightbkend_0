@@ -29,3 +29,16 @@ subnets = {
 
 admin_username = "azureuser"
 ssh_public_key = ""
+
+source_image = {
+  publisher = "RedHat"
+  offer     = "RHEL"
+  sku       = "9-lvm-gen2"
+  version   = "latest"
+}
+
+os_disk {
+  caching              = "ReadWrite"
+  storage_account_type = "Premium_LRS"
+  disk_size_gb         = 120
+}

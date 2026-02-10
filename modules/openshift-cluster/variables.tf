@@ -82,3 +82,22 @@ variable "admin_username" {
 variable "ssh_public_key" {
   type = string
 }
+
+variable "source_image" {
+  description = "VM source image reference"
+  type = object({
+    publisher = string
+    offer     = string
+    sku       = string
+    version   = string
+  })
+}
+
+variable "os_disk" {
+  description = "os disk size"
+  type = object({
+    caching              = string
+    storage_account_type = string
+    disk_size_gb         = string
+  })
+}
