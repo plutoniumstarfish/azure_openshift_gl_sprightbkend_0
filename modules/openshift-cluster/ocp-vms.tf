@@ -49,23 +49,23 @@ resource "azurerm_linux_virtual_machine" "bootstrap" {
 
 
 resource "azurerm_network_interface" "master" {
-  count               = var.master_count
-  name                = "${var.cluster_name}-master-nic-${count.index}"
-  location            = var.location
-  resource_group_name = var.resource_group_name
+  count                 = var.master_count
+  name                  = "${local.nic_name}-master-${count.index}"
+  location              = var.location
+  resource_group_name   = local.rg_name
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = var.subnet_id
+    subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "Static"
   }
 }
 
 resource "azurerm_linux_virtual_machine" "master" {
   count               = var.master_count
-  name                = "${var.cluster_name}-master-${count.index + 1}"
+  name                = "${local.vm_name}-master-${count.index + 1}"
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name   = local.rg_name
   size                = var.master_size
   network_interface_ids = [azurerm_network_interface.master[count.index].id]
   zone = var.zones[count.index % length(var.zones)]
@@ -94,22 +94,22 @@ resource "azurerm_linux_virtual_machine" "master" {
 
 resource "azurerm_network_interface" "worker" {
   count               = var.worker_count
-  name                = "${var.cluster_name}-worker-nic-${count.index}"
+  name                = "${local.nic_name}-worker-${count.index}"
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name   = local.rg_name
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = var.subnet_id
+    subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
   }
 }
 
 resource "azurerm_linux_virtual_machine" "worker" {
   count               = var.worker_count
-  name                = "${var.cluster_name}-worker-${count.index + 1}"
+  name                = "${local.vm_name}-worker-${count.index + 1}"
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = local.rg_name
   size                = var.worker_size
   network_interface_ids = [azurerm_network_interface.worker[count.index].id]
   zone = var.zones[count.index % length(var.zones)]
