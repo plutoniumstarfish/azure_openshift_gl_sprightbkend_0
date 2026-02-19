@@ -47,16 +47,6 @@ locals {
     [var.org, var.infra_env, local.loc_name, var.cluster_name, "vm"]
   )
 
-  default_dentifier = (
-    var.infra_env == "dev" ?
-    [var.org, local.env_part, local.loc_name, var.cluster_name] :
-
-    var.infra_env == "npr" ?
-    [var.org, var.infra_env, local.env_part, local.loc_name, var.cluster_name] :
-
-    [var.org, var.infra_env, local.loc_name, var.cluster_name,]
-  )
-
   rg_name = join("-", local.name_parts)
   
   nic_name = join("-", local.nic_idetifier)
@@ -64,6 +54,4 @@ locals {
   subnet_name = join("-", local.subnet_identifier)
 
   vm_name = join("-", local.vm_identifier)
-
-  resource_name_default =join("-", local.default_dentifier)
 }

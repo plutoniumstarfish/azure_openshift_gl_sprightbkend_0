@@ -43,3 +43,5 @@ os_disk {
   storage_account_type = "Premium_LRS"
   disk_size_gb         = 120
 }
+
+private_ip_address = "10.160.0.10"

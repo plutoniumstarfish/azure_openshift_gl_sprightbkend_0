@@ -12,15 +12,7 @@ module "openshift" {
 
 
 
-variable "vnet_id" {
-  type = string
-}
-
 variable "subnet_id" {
-  type = string
-}
-
-variable "bastion_subnet_id" {
   type = string
 }
 
