@@ -3,7 +3,8 @@ infra_env    = "dev"
 stage        = "1"
 location     = "East US"
 cluster_name = "nadare"
-
+master_count = 3
+worker_count = 20
 address_space = ["10.160.0.0/16"]
 
 subnets = {

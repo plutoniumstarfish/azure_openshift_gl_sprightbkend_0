@@ -1,25 +1,15 @@
-variable "org" {
-    type = string
-    description = "organization/company"
-    default = "gni"
+module "openshift" {
+    source    = "../../modules/openshift-cluster"
+    location  = var.location
+    infra_env = var.infra_env
+    org       = var.org
+    stage     = var.stage
+    cluster_name = var.cluster_name
+    master_count = var.master_count
+    worker_count = var.worker_count
+    
 }
 
-variable "infra_env" {
-  type = string
-}
-
-variable "stage" {
-  type    = string
-  default = ""
-}
-
-variable "cluster_name" {
-  type = string
-}
-
-variable "location" {
-  type = string
-}
 
 
 variable "vnet_id" {
@@ -36,16 +26,6 @@ variable "bastion_subnet_id" {
 
 variable "vnet_cidr" {
   type = string
-}
-
-variable "master_count" {
-  type    = number
-  default = 3
-}
-
-variable "worker_count" {
-  type    = number
-  default = 3
 }
 
 variable "zones" {

@@ -1,26 +1,35 @@
+variable "location" {
+    type = string
+    description = "Location to deploy resources"
+    default = "EAST US"
+}
+
+variable "infra_env" {
+    type = string
+    description = "subscription environment dev, npr, prp, prd"
+    default = "dev"
+}
+    
 variable "org" {
     type = string
     description = "organization/company"
     default = "gni"
 }
 
-variable "infra_env" {
-  type = string
-}
 
 variable "stage" {
   type    = string
   default = ""
 }
 
+
 variable "cluster_name" {
   type = string
 }
 
-variable "location" {
+variable "resource_group_name" {
   type = string
 }
-
 
 variable "vnet_id" {
   type = string

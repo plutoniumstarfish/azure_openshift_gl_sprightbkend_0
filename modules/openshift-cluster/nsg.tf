@@ -1,7 +1,7 @@
 resource "azurerm_network_security_group" "cluster_nsg" {
   name                = "${var.cluster_name}-nsg"
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = local.rg_name
 }
 
 # Allow SSH from Bastion subnet only
@@ -15,7 +15,7 @@ resource "azurerm_network_security_rule" "ssh_from_bastion" {
   destination_port_range      = "22"
   source_port_range           = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = var.resource_group_name
+  resource_group_name         = local.rg_name
   network_security_group_name = azurerm_network_security_group.cluster_nsg.name
 }
 
@@ -30,6 +30,6 @@ resource "azurerm_network_security_rule" "internal_vnet" {
   destination_address_prefix  = "*"
   source_port_range           = "*"
   destination_port_range      = "*"
-  resource_group_name         = var.resource_group_name
+  resource_group_name         = local.rg_name
   network_security_group_name = azurerm_network_security_group.cluster_nsg.name
 }

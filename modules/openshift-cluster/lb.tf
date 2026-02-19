@@ -1,7 +1,7 @@
 resource "azurerm_lb" "internal_api" {
   name                = "${var.cluster_name}-internal-lb"
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = local.rg_name
   sku                 = "Standard"
 
   frontend_ip_configuration {
