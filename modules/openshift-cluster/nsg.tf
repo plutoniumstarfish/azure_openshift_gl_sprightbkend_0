@@ -1,5 +1,5 @@
 resource "azurerm_network_security_group" "cluster_nsg" {
-  name                = "${var.cluster_name}-nsg"
+  name                = "${local.resource_name_default}-nsg"
   location            = var.location
   resource_group_name = local.rg_name
 }
@@ -11,7 +11,7 @@ resource "azurerm_network_security_rule" "ssh_from_bastion" {
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
-  source_address_prefix       = var.vnet_cidr
+  source_address_prefix       = data.azurerm_virtual_network.shared_vnet.address_space
   destination_port_range      = "22"
   source_port_range           = "*"
   destination_address_prefix  = "*"
@@ -19,14 +19,14 @@ resource "azurerm_network_security_rule" "ssh_from_bastion" {
   network_security_group_name = azurerm_network_security_group.cluster_nsg.name
 }
 
-# Allow internal VNet communication
-resource "azurerm_network_security_rule" "internal_vnet" {
-  name                        = "Allow-VNet"
+# Allow internal only same subnet or cluster communication
+resource "azurerm_network_security_rule" "allow_same_subnet" {
+  name                        = "Allow-Same-Subnet"
   priority                    = 110
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "*"
-  source_address_prefix       = var.vnet_cidr
+  source_address_prefix       = data.azurerm_subnet.subnet.address_prefix
   destination_address_prefix  = "*"
   source_port_range           = "*"
   destination_port_range      = "*"

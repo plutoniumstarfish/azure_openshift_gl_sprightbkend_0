@@ -16,7 +16,7 @@ variable "org" {
     default = "gni"
 }
 
-variable private_ip_address {
+variable lb_private_ip_address {
   type = string
 }
 
@@ -24,7 +24,6 @@ variable "stage" {
   type    = string
   default = ""
 }
-
 
 variable "cluster_name" {
   type = string

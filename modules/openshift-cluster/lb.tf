@@ -8,6 +8,6 @@ resource "azurerm_lb" "internal_api" {
     name                          = "frontend"
     subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "Static"
-    private_ip_address            = var.private_ip_address
+    private_ip_address            = "${var.lb_private_ip_address}"
   }
 }

@@ -45,3 +45,10 @@ os_disk {
 }
 
 private_ip_address = "10.160.0.10"
+
+master_size  = var.master_size
+
+zones = ["1","2","3"]
+master_size = "Standard_D8s_v5"
+
+worker_size = "Standard_D8s_v5"

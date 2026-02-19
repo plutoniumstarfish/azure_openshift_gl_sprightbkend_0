@@ -1,10 +1,22 @@
+variable "location" {
+    type = string
+    description = "Location to deploy resources"
+    default = "EAST US"
+}
+
+variable "infra_env" {
+    type = string
+    description = "subscription environment dev, npr, prp, prd"
+    default = "dev"
+}
+    
 variable "org" {
     type = string
     description = "organization/company"
     default = "gni"
 }
 
-variable "infra_env" {
+variable lb_private_ip_address {
   type = string
 }
 
@@ -17,11 +29,7 @@ variable "cluster_name" {
   type = string
 }
 
-variable "location" {
-  type = string
-}
-
-variable private_ip_address {
+variable "resource_group_name" {
   type = string
 }
 
